@@ -1,0 +1,15 @@
+-  hosts: machines
+   tasks:
+           - shell:  echo "docker installation"
+           - shell:  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+           - shell:  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+           - shell:  sudo apt-get update
+           - shell:  sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+           - shell:  sudo apt-get install -y docker-ce
+           - shell:  sudo apt-get install -y docker-compose
+           - shell:  sudo docker pull library/alpine
+           - copy:   src=./Dockerfile dest=/var/tmp/Dockerfile
+           - copy:   src=./docker-compose.yml dest=/var/tmp/docker-compose.yml
+           - copy:   src=./nginx dest=/var/tmp
+           - shell:  sudo docker-compose -f /var/tmp/docker-compose.yml up -d
+           - debug:  msg='Test container with curl http://192.168.1.101:8080'

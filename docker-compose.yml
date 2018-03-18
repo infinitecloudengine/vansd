@@ -1,0 +1,9 @@
+# 
+version: '2'
+
+services: 
+  nginx: 
+    build: /var/tmp
+    container_name: nginx-01
+    ports:
+      - '8080:8080'
