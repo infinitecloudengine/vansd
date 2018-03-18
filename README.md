@@ -1,4 +1,4 @@
-#vansd
+# vansd
 
 This build is to create a docker container running Nginx on a Vagrant virtual machine which is bridged to an external netmork.
 
@@ -29,15 +29,15 @@ virtual machine need to be populated into an inventory file for the Ansible buil
 
   During the initial Vagrant build, it might ask you which interface to use if there are several available ,
 
-      ==> machine1: Available bridged network interfaces:
+       machine1: Available bridged network interfaces:
           1) enp2s0
           2) docker0
           3) virbr0
           4) br-02db3faa873c
           5) br-17b66dab5ba7
-     ==> machine1: When choosing an interface, it is usually the one that is
-     ==> machine1: being used to connect to the internet.
-         machine1: Which interface should the network bridge to?
+       machine1: When choosing an interface, it is usually the one that is
+       machine1: being used to connect to the internet.
+       machine1: Which interface should the network bridge to?
 
   this can then be added into the Vagrantfile with :
 
@@ -48,23 +48,23 @@ virtual machine need to be populated into an inventory file for the Ansible buil
 
   Check the Vagrantfile with :
 
-  vagrant validate
+  `vagrant validate`
 
   Check the Ansible playbook with :
 
-  ansible-playbook --syntax-check playbook.yml
+  `ansible-playbook --syntax-check playbook.yml`
 
   The build can be started with :
 
-  vagrant up
+  `vagrant up`
 
   Should the build get interrupted, it can be continued with :
 
-  vagrant provision --provision-with resume
+  `vagrant provision --provision-with resume`
 
   The Vagrant instance should appear as 'machine1'
 
-  $ vagrant global-status
+  `vagrant global-status`
   id       name     provider   state    directory                           
   --------------------------------------------------------------------------
   890823e  default  virtualbox poweroff /home/pi/devops/vagrant             
@@ -73,11 +73,11 @@ virtual machine need to be populated into an inventory file for the Ansible buil
 
   The Vagrant vm can be connected by ssh with :
 
-  vagrant ssh
+  `vagrant ssh`
 
   The Nginx web page running in Docker can be checked with curl :
 
-  $ curl http://192.168.1.101:8080
+  `curl http://192.168.1.101:8080`
 
 
 * Resources
